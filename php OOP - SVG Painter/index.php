@@ -5,20 +5,27 @@ error_reporting(E_ALL);
 ?>
 
 <?php
-// includinam failus
-include 'Shape.class.php';
-include 'Rectangle.class.php';
-include 'Circle.class.php';
-include 'Ellipse.class.php';
-include 'Polygon.class.php';
-include 'Program.class.php';
-include 'SvgRenderer.class.php';
+// autoloud, includina visas classes
+spl_autoload_register(function ($class_name) {
+    include($class_name . '.class.php');
+});
+// arba galima paprastuoju budu includinam failus
+// include 'Point.class.php';
+// include 'Shape.class.php';
+// include 'Rectangle.class.php';
+// include 'Square.class.php';
+// include 'Ellipse.class.php';
+// include 'Circle.class.php';
+// include 'Polygon.class.php';
+// include 'Text.class.php';
+// include 'Program.class.php';
+// include 'SvgRenderer.class.php';
 ?>
 
 <?php
 
  $program = new Program();
- $renderer = new SvgRenderer();
+ $renderer = new SvgRenderer(1000, 700, "gray");
 
 ?>
 
@@ -29,10 +36,10 @@ include 'SvgRenderer.class.php';
         <title>SVG Painter</title>
     </head>
     <body>
+
+        <h1>My first SVG Painter</h1>
         <?php $program -> run($renderer); // svg objekta idedame i program ?>
         <!--
-        <h1>My first SVG Painter</h1>
-
         <svg width="1000" height="700" style="border: 1px solid black;">
             <circle cx="350" cy="350" r="200" fill="#fef2aa" />
             <rect x="450" y="290" width="120" height="120" style="fill: #82dbff" opacity= "0.5"  />

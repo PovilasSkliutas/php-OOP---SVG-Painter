@@ -6,42 +6,74 @@ class Program {
     public function run(SvgRenderer $renderer) { // class 'SvgRenderer' injection
 
         echo "Program is running...</br>";
-        // piesiame raudona kvadrata <rect x="50" y="75" width="250" height="120" style="fill: #b12122" opacity= "0.7"  />
+        // piesiame raudona staciakampi <rect x="50" y="75" width="250" height="120" style="fill: #b12122" opacity= "0.7"  />
         $rectangle1 = new Rectangle();
-        $rectangle1->setLocation(50, 75);
+        $rectangle1->location->set(50, 75);
         $rectangle1->setSize(250, 120);
         $rectangle1->setColor('#b12122');
         $rectangle1->setOpacity(0.7);
         $rectangle1->draw($renderer);
-        // piesiame melyna kvadrata <rect x="450" y="290" width="120" height="120" style="fill: #82dbff" opacity= "0.7"  />
-        $rectangle1->setLocation(450, 290);
-        $rectangle1->setSize(120, 120);
-        $rectangle1->setColor('#82dbff');
-        $rectangle1->draw($renderer);
 
-        // piesiame apskritima <circle cx="350" cy="350" r="200" fill="#fef2aa" />
+        // piesiame melyna kvadrata <rect x="450" y="290" width="120" height="120" style="fill: #82dbff" opacity= "0.7"  />
+        $square = new Square();
+        $square->location->set(450, 290);
+        $square->setSize(200);
+        $square->setColor('#82dbff');
+        $square->draw($renderer);
+
+        // piesiame apskritima <circle cx="350" cy="350" r="200" style="fill: #fef2aa" opacity= "0.7" />
         $circle = new Circle();
-        $circle->setLocation(350, 350);
+        $circle->location->set(350, 350);
         $circle->setRadius(200);
         $circle->setColor('#fef2aa');
         $circle->setOpacity(0.7);
         $circle->draw($renderer);
+        // piesiame 2 apskritima <circle cx="350" cy="350" r="200" style="fill: #fef2aa" opacity= "0.7" />
+        $circle->location->set(500, 500);
+        $circle->setRadius(100);
+        $circle->setColor('#fef2aa');
+        $circle->setOpacity(0.7);
+        $circle->draw($renderer);
 
-        // piesiame elipse <ellipse cx="700" cy="250" rx="50" ry="100" style="fill: #2e8a57" />
+        // piesiame elipse <ellipse cx="700" cy="250" rx="50" ry="100" style="fill: #2e8a57" opacity= "0.7" />
         $ellipse = new Ellipse();
-        $ellipse->setLocation(700, 250);
+        $ellipse->location->set(700, 250);
         $ellipse->setRadius(50, 100);
         $ellipse->setColor('#2e8a57');
         $ellipse->setOpacity(0.7);
         $ellipse->draw($renderer);
+        // piesiame 2 elipse <ellipse cx="700" cy="250" rx="50" ry="100" style="fill: #2e8a57" opacity= "0.7" />
+        $ellipse->location->set(700, 550);
+        $ellipse->setRadius(200, 50);
+        $ellipse->setColor('blue');
+        $ellipse->setOpacity(0.7);
+        $ellipse->draw($renderer);
 
-        // piesiame poligona (trikampi) <polygon points="60,135 240,350 60,350" style="fill: #a040a0" opacity= "0.75" />
+        // piesiame poligona (trikampi) <polygon points="60,135 240,350 60,350" style="fill: #a040a0" opacity= "0.7" />
         $polygon = new Polygon();
-        $polygon->setPoints(60,135 240,350 60,350);
+        $polygon->setPoints([150,135], [240,350], [60,350]);
+        $polygon->setColor('#a040a0');
+        $polygon->setOpacity(0.7);
+        $polygon->draw($renderer);
+        // piesiame 2 poligona (trikampi) <polygon points="60,135 240,350 60,350" style="fill: #a040a0" opacity= "0.7" />
+        $polygon->setPoints([300,300], [240,450], [440,450]);
         $polygon->setColor('#a040a0');
         $polygon->setOpacity(0.7);
         $polygon->draw($renderer);
 
+        // piesiame teksta
+        $text = new Text();
+        $text->location->set(300, 250);
+        $text->setContent('Rutuliukas');
+        $text->setColor('blue');
+        $text->setOpacity(1);
+        $text->draw($renderer);
+        // piesiame teksta
+        $text->location->set(450, 400);
+        $text->setContent('Kvadratukas');
+        $text->setColor('blue');
+        $text->setOpacity(1);
+        $text->draw($renderer);
 
 
 

@@ -1,23 +1,12 @@
 <?php
 
 // apsirasome class'e Circle
-class Circle extends Shape {
-// apsirasome circle savybes (properties)
-    public $radius;
+class Circle extends Ellipse{
 
-
-// apsirasome circle metodus (funkcijas)
-    // apsirasome funkcija draw, kuri nupies circle
-    public function draw(SvgRenderer $renderer) {
-        $renderer->drawCircle($this->x,
-                             $this->y,
-                             $this->radius,
-                             $this->color,
-                             $this->opacity);
-    }
-    // apsirasome funkcija setRadius, kuri nurodo circle radius
-    public function setRadius($radius) {
-        $this->radius = $radius;
+    // apsirasome funkcija setRadius, kuri nurodo ellipse radius'us
+    public function setRadius($radiusX, $radiusY=0) {
+        $this->radiusX = $radiusX;
+        $this->radiusY = $radiusX;
     }
 
 }
